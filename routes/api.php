@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('users', App\Http\Controllers\Api\UserController::class)
+    ->only('update', 'store', 'index', 'show');
+
+Route::apiResource('files', App\Http\Controllers\Api\FileController::class)
+    ->only('store', 'destroy', 'index', 'show');
+
+Route::apiResource('tags', App\Http\Controllers\Api\TagController::class)
+    ->only('update', 'store', 'destroy', 'index', 'show');
+
+Route::apiResource('posts', App\Http\Controllers\Api\PostController::class)
+    ->only('update', 'store', 'destroy', 'index', 'show');
